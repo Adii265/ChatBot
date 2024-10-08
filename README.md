@@ -146,20 +146,19 @@ print(response)
 
 
 
-### Evaluation
+## Evaluation
 
-**Performance Metrics**
+### Performance Metrics
 1. Query Relevance: The RAG system returns highly relevant results based on semantic and keyword search.
 2. Latency: Achieved an average latency of 2-3 seconds per query.
 3. Scalability: The pipeline handles large datasets up to 1TB with stable performance.
 
-**Results**
-
+### Results
 1. Accurate text extraction from both scanned and digital PDFs.
 2. Scalable RAG pipeline with support for multilingual documents.
 3. Effective memory retention for chat-like interactions.
 
-Contact
+## Contact
 For questions or support, reach out at: aditiagrawal267@gmail.com
 
 
