@@ -108,48 +108,43 @@ print(response)
 
 ```
 
-### Pipeline Architecture
+## Pipeline Architecture
 
-**1. Text Extraction**
+### 1. Text Extraction
+- **OCR for Scanned PDFs**: Utilizes **Tesseract** for extracting text from scanned documents.
+- **PDF Parsing**: Employs **PyMuPDF (Fitz)** for extracting text from digitally created PDFs.
 
-a. OCR for Scanned PDFs: Using Tesseract.
-b. PDF Parsing: For digital PDFs, using PyMuPDF (Fitz).
+### 2. Embedding Creation
+- **Model**: Uses **all-MiniLM-L6-v2** from **sentence-transformers** to generate semantic embeddings.
 
-**2. Embedding Creation**
+### 3. Hybrid Search
+- **Vector Database**: Implements **FAISS** for efficient semantic search.
+- **Keyword Search**: Based on extracted metadata to improve search accuracy.
 
-Model: all-MiniLM-L6-v2 from sentence-transformers is used for generating embeddings.
+### 4. Query Decomposition
+- Breaks down complex queries into smaller, manageable sub-queries for more granular and relevant results.
 
-**3. Hybrid Search**
+### 5. RAG Pipeline
+- **LLM**: Integrates **Llama2-7B** for fluent and contextually relevant text generation.
 
-a. Vector Database: FAISS for semantic search.
-b. Keyword Search: Based on extracted metadata.
 
-**4. Query Decomposition**
 
-Breaks down complex queries into smaller sub-queries for granular results.
+## Models and Libraries
 
-**5. RAG Pipeline**
+### Text Extraction
+- **Tesseract**: Utilized for OCR in scanned PDFs.
+- **PyMuPDF (Fitz)**: Used for text extraction from digitally created PDFs.
 
-LLM: Llama2-7B is used for fluent and relevant text generation.
+### Embeddings
+- **all-MiniLM-L6-v2**: Sourced from **sentence-transformers** for generating semantic embeddings.
 
-### Models and Libraries
+### Language Model
+- **Llama2-7B**: Chosen for fluent text generation and summarization tasks.
 
-**Text Extraction:**
+### Vector Search
+- **FAISS**: Implemented for high-performance vector search capabilities.
 
-Tesseract OCR for scanned PDFs.
-PyMuPDF (Fitz) for digital PDFs.
 
-**Embeddings:**
-
-all-MiniLM-L6-v2 from sentence-transformers.
-
-**Language Model:**
-
-Llama2-7B for fluent text generation and summarization.
-
-**Vector Search:**
-
-FAISS for high-performance vector search.
 
 ### Evaluation
 
