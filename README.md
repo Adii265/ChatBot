@@ -1,6 +1,6 @@
-# **RAG-based PDF Summarization and Question Answering System**
+# **Chatbot**
 
-This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that summarizes content and answers questions from multilingual PDFs. It handles both scanned and digital PDFs and can scale to large datasets. The pipeline features chat memory, query decomposition, hybrid search (keyword + semantic), reranking, metadata filtering, and optimized text extraction.
+This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that summarizes content and answers questions from specific trained PDFs. It handles both scanned and digital PDFs and can scale to large datasets. The pipeline features chat memory, query decomposition, hybrid search (keyword + semantic), reranking, metadata filtering, and optimized text extraction.
 
 ---
 
@@ -32,30 +32,24 @@ This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that
 ### **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/username/rag-pdf-summarization.git
-cd rag-pdf-summarization
+git clone https://github.com/Adii265/ChatBot.git
+cd ChatBot
 ```
 
-2. Install Dependencies
-To install required libraries, use the requirements.txt:
+2. Install Dependencies:
 
-```bash
-pip install -r requirements.txt
-```
-
-Dependencies include:
-
-langchain
-transformers
-sentence-transformers
-faiss-cpu
-tesseract
-PyMuPDF
-openai
+1. langchain
+2. transformers
+3. sentence-transformers
+4. faiss-cpu
+5. tesseract
+6. PyMuPDF
+7. openai
 
 ### Usage:
 1. Text Extraction from PDFs
 Use the following snippet to extract text from both scanned and digital PDFs
+
 ```bash
 from pdf_extraction import extract_text
 
@@ -69,9 +63,10 @@ text_ocr = extract_text(pdf_path_scanned, ocr=True)
 
 print(text)
 print(text_ocr)
-
 ```
+
 2. Create Embeddings for Search
+   
 ```bash
 from embedding import create_embeddings
 
@@ -82,7 +77,9 @@ embeddings = create_embeddings(documents)
 print(embeddings)
 
 ```
+
 3. RAG Pipeline
+   
 ```bash
 from rag_pipeline import RAGPipeline
 
@@ -96,7 +93,9 @@ response = rag_pipeline.answer_query(query, pdf_path="sample_digital.pdf")
 print(response)
 
 ```
+
 4. Metadata Filtering
+   
 ```bash
 # Add metadata filtering to limit search results by language
 response = rag_pipeline.answer_query(
@@ -108,60 +107,65 @@ response = rag_pipeline.answer_query(
 print(response)
 
 ```
-Pipeline Architecture
-1. Text Extraction
-OCR for Scanned PDFs: Using Tesseract.
-PDF Parsing: For digital PDFs, using PyMuPDF (Fitz).
-2. Embedding Creation
+
+### Pipeline Architecture
+
+**1. Text Extraction**
+
+a. OCR for Scanned PDFs: Using Tesseract.
+b. PDF Parsing: For digital PDFs, using PyMuPDF (Fitz).
+
+**2. Embedding Creation**
+
 Model: all-MiniLM-L6-v2 from sentence-transformers is used for generating embeddings.
-3. Hybrid Search
-Vector Database: FAISS for semantic search.
-Keyword Search: Based on extracted metadata.
-4. Query Decomposition
+
+**3. Hybrid Search**
+
+a. Vector Database: FAISS for semantic search.
+b. Keyword Search: Based on extracted metadata.
+
+**4. Query Decomposition**
+
 Breaks down complex queries into smaller sub-queries for granular results.
-5. RAG Pipeline
+
+**5. RAG Pipeline**
+
 LLM: Llama2-7B is used for fluent and relevant text generation.
-Models and Libraries
-Text Extraction:
+
+### Models and Libraries
+
+**Text Extraction:**
+
 Tesseract OCR for scanned PDFs.
 PyMuPDF (Fitz) for digital PDFs.
-Embeddings:
-all-MiniLM-L6-v2 from sentence-transformers.
-Language Model:
-Llama2-7B for fluent text generation and summarization.
-Vector Search:
-FAISS for high-performance vector search.
-Evaluation
-Performance Metrics
-Query Relevance: The RAG system returns highly relevant results based on semantic and keyword search.
-Latency: Achieved an average latency of 2-3 seconds per query.
-Scalability: The pipeline handles large datasets up to 1TB with stable performance.
-Results
-Accurate text extraction from both scanned and digital PDFs.
-Scalable RAG pipeline with support for multilingual documents.
-Effective memory retention for chat-like interactions.
-Future Improvements
-Advanced Document Segmentation: Further refine text chunking for complex documents.
-Multilingual Models: Integrate LLMs suited for handling multilingual documents.
-Real-time Performance: Continue to optimize for reduced latency in large-scale deployments.
-Contributing
-Feel free to open issues and submit pull requests for improvements or bug fixes!
 
-License
-This project is licensed under the MIT License.
+**Embeddings:**
+
+all-MiniLM-L6-v2 from sentence-transformers.
+
+**Language Model:**
+
+Llama2-7B for fluent text generation and summarization.
+
+**Vector Search:**
+
+FAISS for high-performance vector search.
+
+### Evaluation
+
+**Performance Metrics**
+1. Query Relevance: The RAG system returns highly relevant results based on semantic and keyword search.
+2. Latency: Achieved an average latency of 2-3 seconds per query.
+3. Scalability: The pipeline handles large datasets up to 1TB with stable performance.
+
+**Results**
+
+1. Accurate text extraction from both scanned and digital PDFs.
+2. Scalable RAG pipeline with support for multilingual documents.
+3. Effective memory retention for chat-like interactions.
 
 Contact
-For questions or support, reach out at: contact@username.com
-
-
-### How to Use:
-
-1. **Copy and paste** this content into a `README.md` file in the root directory of your GitHub repository.
-2. Modify the repository link and contact information (`username` and `contact@username.com`) with the correct details specific to your project.
-
-This README provides a comprehensive introduction, installation steps, usage guide, and explanations about the architecture and models used in your RAG pipeline project.
-
-
+For questions or support, reach out at: aditiagrawal267@gmail.com
 
 
 
