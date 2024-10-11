@@ -17,13 +17,10 @@ This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that
 
 ## **Features**
 
-- **Multilingual Text Extraction**: Supports extraction from both scanned and digitally-created PDFs using OCR and standard parsing techniques.
-- **Hybrid Search**: Combines keyword-based and semantic search to improve the relevance of retrieved documents.
+- **Text Extraction**: Supports extraction from both scanned and digitally-created PDFs using OCR and standard parsing techniques.
 - **Optimized Chunking**: Efficiently splits text into chunks to maintain context and ensure accurate embedding.
 - **RAG Pipeline**: Retrieves and generates responses based on relevant document chunks.
-- **Chat Memory**: Maintains context over multiple queries.
 - **Query Decomposition**: Breaks down complex queries into manageable sub-queries.
-- **Metadata Filtering**: Filters documents based on language, document type, or metadata attributes.
 
 ---
 
@@ -44,7 +41,7 @@ cd ChatBot
 4. faiss-cpu
 5. tesseract
 6. PyMuPDF
-7. openai
+
 
 ### Usage:
 1. Text Extraction from PDFs
@@ -94,20 +91,6 @@ print(response)
 
 ```
 
-4. Metadata Filtering
-   
-```bash
-# Add metadata filtering to limit search results by language
-response = rag_pipeline.answer_query(
-    query="Summarize the document",
-    pdf_path="sample_digital.pdf",
-    metadata={"language": "English"}
-)
-
-print(response)
-
-```
-
 ## Pipeline Architecture
 
 ### 1. Text Extraction
@@ -117,9 +100,8 @@ print(response)
 ### 2. Embedding Creation
 - **Model**: Uses **all-MiniLM-L6-v2** from **sentence-transformers** to generate semantic embeddings.
 
-### 3. Hybrid Search
+### 3. VectorDB Search
 - **Vector Database**: Implements **FAISS** for efficient semantic search.
-- **Keyword Search**: Based on extracted metadata to improve search accuracy.
 
 ### 4. Query Decomposition
 - Breaks down complex queries into smaller, manageable sub-queries for more granular and relevant results.
@@ -150,13 +132,12 @@ print(response)
 
 ### Performance Metrics
 1. Query Relevance: The RAG system returns highly relevant results based on semantic and keyword search.
-2. Latency: Achieved an average latency of 2-3 seconds per query.
+2. Latency: Achieved an average latency of 5-7 seconds per query.
 3. Scalability: The pipeline handles large datasets up to 1TB with stable performance.
 
 ### Results
 1. Accurate text extraction from both scanned and digital PDFs.
-2. Scalable RAG pipeline with support for multilingual documents.
-3. Effective memory retention for chat-like interactions.
+2. Scalable RAG pipeline with support for both scanned and pdf documents.
 
 ## Contact
 For questions or support, reach out at: aditiagrawal267@gmail.com
