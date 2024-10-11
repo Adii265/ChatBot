@@ -1,6 +1,6 @@
 # **Chatbot**
 
-This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that summarizes content and answers questions from specific trained PDFs. It handles both scanned and digital PDFs and can scale to large datasets. The pipeline features chat memory, query decomposition, hybrid search (keyword + semantic), reranking, metadata filtering, and optimized text extraction.
+This project implements a **Retrieval-Augmented Generation (RAG)** pipeline that summarizes content and answers questions from specific trained PDFs. It handles both scanned and digital PDFs and can scale to large datasets. The pipeline features query decomposition and optimized text extraction.
 
 ---
 
